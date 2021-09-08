@@ -56,19 +56,7 @@ public class MainActivity extends AppCompatActivity {
                saveItems();
            }
         };
-        ItemsAdapter.onLongClickListener OnClickListener = new ItemsAdapter.onLongClickListener() {
-            @Override
-            public void onItemLongClicked(int position) {
-                String tag = "Main Activity";
-                String msg = "Single click at posistion";
-                Log.d(tag, msg+position);
 
-                Intent i = new Intent( MainActivity.this, EditActivity.class);
-                i.putExtra(KEY_ITEM_TEXT,items.get(position));
-                i.putExtra(KEY_ITEM_POSITION, position);
-                startActivityForResult(i, EDIT_TEXT_CODE);
-            }
-        };
         itemsAdapter = new ItemsAdapter(items, onLongClickListener);
         rbitems.setAdapter(itemsAdapter);
         rbitems.setLayoutManager(new LinearLayoutManager(  this));
@@ -86,13 +74,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    @Override
-    protected void onActivityResult(int  requestCode, int resultCode, @Nullable Intent data){
-        if (resultCode == RESULT_OK && requestCode == EDIT_TEXT_CODE) {
-            String itemText = data.getStringExtra(KEY_ITEM_TEXT);
-            int position = data getExtra() getInt(KEY_ITEM_POSITION);
-        }
-    }
+
 
     private File getDataFile() {
         return new File(getFilesDir(), "data.txt");
